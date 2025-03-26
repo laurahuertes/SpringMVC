@@ -9,20 +9,24 @@ import es.neesis.mvcdemo.model.Sucursal;
 import java.util.List;
 
 
-@RestController
+@Controller
 @RequestMapping("/sucursales")
 public class SucursalController {
 
-    private SucursalService sucursalService;
+    private final SucursalService sucursalService;
 
-    @GetMapping("/formularioSucursal")
-    public String mostrarFormularioSucursal() {
-        return "formularioSucursal"; 
+    public SucursalController(SucursalService sucursalService) {
+        this.sucursalService = sucursalService;
+    }
+
+    @GetMapping("/formularioAddSucursal")
+    public String formularioAddSucursal() {
+        return "formularioAddSucursal";
     }
 
     @PostMapping("/addSucursal")
     public String addSucursal(@RequestParam("nombre") String nombre, @RequestParam("director") String director, @RequestParam("direccion") String direccion, Model model){
-        mostrarFormularioSucursal();
+
         sucursalService.addSucursal(nombre,director,direccion);
         model.addAttribute("nombre" , nombre);
         return "addSucursal";
@@ -36,12 +40,33 @@ public class SucursalController {
         return "listadoSucursales";
     }
 
-    @DeleteMapping("/deleteSucursal")
+    @GetMapping("/formularioDeleteSucursal")
+    public String formularioDeleteSucursal() {
+        return "formularioDeleteSucursal";
+    }
+
+    @PostMapping("/deleteSucursal")
     public String eliminarSucursal(@RequestParam("nombre") String nombre, Model model){
 
         sucursalService.deleteSucursal(nombre);
         model.addAttribute("nombre" , nombre);
         return "deleteSucursal";
+
+    }
+
+    @GetMapping("/formularioModifySucursal")
+    public String formularioModifySucursal() {
+        return "formularioModifySucursal";
+    }
+
+    @PostMapping("/modifySucursal")
+    public String modificarSucursal(@RequestParam("nombre") String nombre,@RequestParam("director") String director, @RequestParam("direccion") String direccion, Model model){
+
+        sucursalService.modifySucursal(nombre,director,direccion);
+        model.addAttribute("nombre" , nombre);
+        model.addAttribute("director" , director);
+        model.addAttribute("direccion" , direccion);
+        return "modifySucursal";
 
     }
 

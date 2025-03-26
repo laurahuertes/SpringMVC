@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Formulario de Usuario</title>
+    <title>Formulario para añadir una Sucursal</title>
 </head>
 <body>
-    <h1>Formulario de Sucursal</h1>
-    <form action="/addSucursal" method="POST">
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" required />
-        <br/>
+    <h1>Añadir Sucursal</h1>
+    <form action="/sucursales/addSucursal" method="POST">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required />
         <br/>
