@@ -46,12 +46,30 @@
             background-color: #4cae4c;
         }
 
-        .menu div a.delete {
-            background-color: #d9534f;
-        }
-
         .menu div a.delete:hover {
             background-color: #c9302c;
+        }
+
+        .menu div form {
+            margin-top: 10px;
+        }
+
+        .menu div form input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .menu div form input[type="submit"]:hover {
+            background-color: #4cae4c;
         }
     </style>
 </head>
@@ -69,9 +87,21 @@
         <!-- Menú Cuentas -->
         <div>
             <h2>Cuentas</h2>
-            <a href="/cuentas/addCuenta" class="add">Añadir cuenta</a>
-            <a href="/cuentas/deleteCuenta" class="delete">Eliminar cuenta</a>
-            <a href="/cuentas/listCuentas" class="¿?">Listar cuentas</a>
+            <form action="/cuentas/addCuenta" method="get">
+                <input type="submit" value="Añadir cuenta">
+            </form>
+
+            <form action="/cuentas/deleteCuenta" method="get">
+                <input type="submit" value="Eliminar cuenta">
+            </form>
+
+            <form action="/cuentas/detailCuenta" method="get">
+                <input type="submit" value="Mostrar balance de una cuenta">
+            </form>
+
+            <form action="/cuentas/listCuentas" method="get">
+                <input type="submit" value="Listar cuentas">
+            </form>
         </div>
 
         <!-- Menú Sucursales -->

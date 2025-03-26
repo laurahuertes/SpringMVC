@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Cuenta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #2e6da4;
+        }
+
+        div {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            width: 40%;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        div h2 {
+            color: #333;
+        }
+
+        div p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .message {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        a.volver {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a.volver:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalle de la Cuenta</h1>
+
+    <div>
+        <form action="/cuentas/detailCuenta" method="get">
+            <label for="numeroCuenta">Número de Cuenta:</label>
+            <input type="number" id="numeroCuenta" name="numeroCuenta" required><br><br>
+
+            <input type="submit" value="Mostrar balance">
+        </form>
+
+        <div th:if="${numeroCuenta}">
+            <h2>Detalles de la cuenta</h2>
+            <p><strong>Número de Cuenta:</strong> <span th:text="${numeroCuenta}"></span></p>
+            <p><strong>Balance:</strong> <span th:text="${balance}"></span> €</p>
+        </div>
+
+        <div th:if="${message}" class="message">
+            <p th:text="${message}"></p>
+        </div>
+    </div>
+
+    <a href="/" class="volver">Volver al menú principal</a>
+</body>
+</html>

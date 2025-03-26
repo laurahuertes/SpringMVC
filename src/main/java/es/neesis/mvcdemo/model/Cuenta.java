@@ -42,7 +42,7 @@ public class Cuenta
         this.sucursal = sucursal;
    }
 
-   public int getidUsuario()
+   public int getIdUsuario()
    {
         return this.idUsuario;
    }

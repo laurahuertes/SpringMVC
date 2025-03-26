@@ -3,6 +3,7 @@ package es.neesis.mvcdemo.services;
 import es.neesis.mvcdemo.model.Cuenta;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -36,25 +37,37 @@ public class CuentasService
 
     public void deleteCuenta(int numeroCuenta)
     {
+        boolean found = false;
+        Iterator<Cuenta> iterator = cuentas.iterator();
+
+        while (iterator.hasNext())
+        {
+            Cuenta cuenta = iterator.next();
+            if (cuenta.getNumeroCuenta() == numeroCuenta)
+            {
+                iterator.remove();
+                found = true;
+                break;
+            }
+        }
+
+        if (!found)
+        {
+            throw new IllegalArgumentException("La cuenta con el número " + numeroCuenta + " no existe.");
+        }
+    }
+
+
+    public Cuenta detailCuenta(int numeroCuenta)
+    {
         for (Cuenta cuenta : cuentas)
         {
             if (cuenta.getNumeroCuenta() == numeroCuenta)
             {
-                try
-                {
-                    cuentas.remove(cuenta);
-                }
-                catch(Exception e)
-                {
-                    throw new IllegalArgumentException("La cuenta que quiere borrar no existe");
-                }
+                return cuenta;
             }
         }
-    }
-
-    public void detailCuenta(int numeroCuenta, double balance)
-    {
-
+        return null;
     }
 
     public Cuenta mostrarCuenta(int identificador) {
