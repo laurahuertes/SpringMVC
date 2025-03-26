@@ -1,17 +1,18 @@
 package es.neesis.mvcdemo.controller;
 
+import es.neesis.mvcdemo.model.Cliente;
 import es.neesis.mvcdemo.services.ClientesService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/clientes")
 public class ClientesController {
     private final ClientesService clientesService;
 
-    @Autowired
     public ClientesController(ClientesService clientesService) {
         this.clientesService = clientesService;
     }
@@ -19,6 +20,11 @@ public class ClientesController {
     @GetMapping("/formularioAddCliente")
     public String formularioAddCliente() {
         return "FormularioAddCliente";
+    }
+
+    @GetMapping("/formularioDeleteCliente")
+    public String formularioDeleteCliente() {
+        return "FormularioDeleteCliente";
     }
 
     @PostMapping("/addCliente")
@@ -32,13 +38,8 @@ public class ClientesController {
         clientesService.addCliente(dni, nombre, direccion, email, telefono, sucursalPrincipal);
 
         model.addAttribute("dni", dni);
-        model.addAttribute("nombre", nombre);
-        model.addAttribute("direccion", direccion);
-        model.addAttribute("email", email);
-        model.addAttribute("telefono", telefono);
-        model.addAttribute("sucursalPrincipal", sucursalPrincipal);
 
-        return "";
+        return "addCliente";
     }
 
 
@@ -56,21 +57,16 @@ public class ClientesController {
 
     @GetMapping("/listadoClientes")
     public String listadoClientes(Model model) {
-        clientesService.listadoClientes();
+        List<Cliente> clientes = clientesService.listadoClientes();
+        model.addAttribute("clientes", clientes);
         return "listadoClientes";
     }
 
-    @DeleteMapping("/borrarCliente")
+    @PostMapping("/borrarCliente")
     public String borrarCliente(@RequestParam(value = "id", required = false) Integer id,
-                                @RequestParam(value = "dni", required = false) String dni,
-                                @RequestParam(value = "email", required = false) String email,
                                 Model model) {
         model.addAttribute("id", id);
-        clientesService.borrarCliente(id.toString());
-        model.addAttribute("dni", dni);
-        clientesService.borrarCliente(dni);
-        model.addAttribute("email", email);
-        clientesService.borrarCliente(email);
+        clientesService.borrarCliente(id);
 
         return "borrarCliente";
     }

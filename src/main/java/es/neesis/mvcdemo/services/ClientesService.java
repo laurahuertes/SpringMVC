@@ -14,11 +14,6 @@ public class ClientesService {
     private SucursalService sucursalService = new SucursalService();
 
 
-    //Listar clientes
-    public List<Cliente> listadoClientes() {
-        return clientes;
-    }
-
     //Añadir cliente
     public void addCliente(String dni, String nombre, String direccion, String email, int telefono, int sucursalPrincipal) {
 
@@ -32,10 +27,13 @@ public class ClientesService {
             }
 
         }
-
-
         Cliente nuevoCliente = new Cliente(contador++, dni, nombre, direccion, email, telefono, newSucursal);
         clientes.add(nuevoCliente);
+    }
+
+    //Listar clientes
+    public List<Cliente> listadoClientes() {
+        return clientes;
     }
 
     //modificar cliente
@@ -57,13 +55,12 @@ public class ClientesService {
     }*/
 
     //Borrar cliente
-    public void borrarCliente(String identificador) {
+    public void borrarCliente(int identificador) {
         for (Cliente cliente : clientes) {
-            if (cliente.getId().toString().equals(identificador) ||
-                    (cliente.getDni().equals(identificador)) ||
-                    (cliente.getEmail().equals(identificador))) {
+            if (cliente.getId() == identificador) {
                 try {
                     clientes.remove(cliente);
+                    break;
                 } catch (Exception e) {
                     throw new IllegalArgumentException("El cliente que quiere borrar no existe");
                 }
