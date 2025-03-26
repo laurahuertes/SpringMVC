@@ -2,7 +2,7 @@
 <html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Añadir Cuenta</title>
+    <title>Eliminar Cuenta</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,7 +53,7 @@
             margin-top: 20px;
         }
 
-        div form input[type="number"], div form input[type="text"], div form input[type="submit"] {
+        div form input[type="number"] {
             padding: 10px;
             width: 80%;
             margin-top: 10px;
@@ -66,7 +66,7 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #5cb85c;
+            background-color: #d9534f;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -78,7 +78,7 @@
         }
 
         div form input[type="submit"]:hover {
-            background-color: #4cae4c;
+            background-color: #c9302c;
         }
 
         .message {
@@ -100,50 +100,24 @@
         a.volver:hover {
             background-color: #4cae4c;
         }
-
-        .success-message {
-            margin-top: 20px;
-            color: green;
-        }
-
-        .success-message h2 {
-            color: #5cb85c;
-        }
-
-        .success-message p {
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
-<h1>Añadir Cuenta</h1>
+<h1>Eliminar Cuenta</h1>
 
 <div>
-    <form action="/cuentas/addCuenta" method="post">
+    <form action="/cuentas/deleteCuenta" method="post">
         <label for="numeroCuenta">Número de Cuenta:</label>
-        <input type="number" id="numeroCuenta" name="numeroCuenta" required><br><br>
+        <input type="number" id="numeroCuenta" name="numeroCuenta" required>
 
-        <label for="sucursal">Sucursal:</label>
-        <input type="number" id="sucursal" name="sucursal" required><br><br>
-
-        <label for="idUsuario">ID Usuario:</label>
-        <input type="number" id="idUsuario" name="idUsuario" required><br><br>
-
-        <label for="balance">Balance (€):</label>
-        <input type="number" id="balance" name="balance" step="0.01" required><br><br>
-
-        <input type="submit" value="Añadir cuenta">
+        <input type="submit" value="Eliminar Cuenta">
     </form>
 
-    <div th:if="${numeroCuenta != ''}" class="success-message">
-        <h2>Cuenta añadida con éxito</h2>
-        <p><strong>Número de Cuenta:</strong> <span th:text="${numeroCuenta}"></span></p>
-        <p><strong>Sucursal:</strong> <span th:text="${sucursal}"></span></p>
-        <p><strong>ID Usuario:</strong> <span th:text="${idUsuario}"></span></p>
-        <p><strong>Balance:</strong> <span th:text="${balance}"></span> €</p>
+    <div th:if="${message}" class="message">
+        <p th:text="${message}"></p>
     </div>
-</div>
 
-<a href="/" class="volver">Volver al menú principal</a>
+    <a href="/" class="volver">Volver al menú principal</a>
+</div>
 </body>
 </html>
