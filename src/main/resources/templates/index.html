@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Menú Principal</title>
@@ -56,31 +56,35 @@
     </style>
 </head>
 <body>
-    <h1>Menú Principal</h1>
+<h1>Menú Principal</h1>
 
-    <div class="menu">
-        <!-- Menú Clientes -->
-        <div>
-            <h2>Clientes</h2>
-            <a href="/clientes/addCliente" class="add">Añadir Cliente</a>
-            <a href="/clientes/eliminar" class="delete">Eliminar Cliente</a>
-        </div>
+<div class="menu">
+    <!-- Menú Clientes -->
+    <div>
+        <h2>Clientes</h2>
 
-        <!-- Menú Cuentas -->
-        <div>
-            <h2>Cuentas</h2>
-            <a href="/cuentas/addCuenta" class="add">Añadir cuenta</a>
-            <a href="/cuentas/deleteCuenta" class="delete">Eliminar cuenta</a>
-            <a href="/cuentas/listCuentas" class="¿?">Listar cuentas</a>
-        </div>
-
-        <!-- Menú Sucursales -->
-        <div>
-            <h2>Sucursales</h2>
-            <a href="/sucursales//formularioSucursal" class="add">Añadir cuenta</a>
-            <a href="/sucursales/listadoSucursales" class="¿?">Listar Sucursales</a>
-            <a href="/sucursales/deleteSucursal" class="delete">Eliminar Sucursal</a>
-        </div>
+        <a href="/clientes/formularioAddCliente" class="add">Añadir Cliente</a>
+        <a href="/clientes/borrarCliente" class="delete">Eliminar Cliente</a>
+        <a href="/clientes/listadoCliente" class="¿?">Listar Clientes</a>
+        <a href="/clientes/modificarCliente" class="modify">Modificar Cliente</a>
+        <a href="/clientes/mostrarCliente" class="¿?">Mostrar Cliente</a>
     </div>
+
+    <!-- Menú Cuentas -->
+    <div>
+        <h2>Cuentas</h2>
+        <a href="/cuentas/addCuenta" class="add">Añadir cuenta</a>
+        <a href="/cuentas/deleteCuenta" class="delete">Eliminar cuenta</a>
+        <a href="/cuentas/listCuentas" class="¿?">Listar cuentas</a>
+    </div>
+
+    <!-- Menú Sucursales -->
+    <div>
+        <h2>Sucursales</h2>
+        <a href="/sucursales//formularioSucursal" class="add">Añadir cuenta</a>
+        <a href="/sucursales/listadoSucursales" class="¿?">Listar Sucursales</a>
+        <a href="/sucursales/deleteSucursal" class="delete">Eliminar Sucursal</a>
+    </div>
+</div>
 </body>
 </html>

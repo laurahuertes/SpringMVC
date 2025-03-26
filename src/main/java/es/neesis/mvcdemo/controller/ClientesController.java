@@ -1,13 +1,12 @@
 package es.neesis.mvcdemo.controller;
 
-import org.springframework.ui.Model;
-import org.springframework.stereotype.Controller;
 import es.neesis.mvcdemo.services.ClientesService;
-import org.springframework.web.bind.annotation.*;
-import es.neesis.mvcdemo.model.Sucursal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping("/clientes")
 public class ClientesController {
     private final ClientesService clientesService;
@@ -17,15 +16,19 @@ public class ClientesController {
         this.clientesService = clientesService;
     }
 
+    @GetMapping("/formularioAddCliente")
+    public String formularioAddCliente() {
+        return "FormularioAddCliente";
+    }
+
     @PostMapping("/addCliente")
     public String addCliente(@RequestParam(value = "dni") String dni,
                              @RequestParam("nombre") String nombre,
                              @RequestParam("direccion") String direccion,
                              @RequestParam("email") String email,
                              @RequestParam("telefono") int telefono,
-                             @RequestParam("sucursalPrincipal") Sucursal sucursalPrincipal,
-                             Model model)
-    {
+                             @RequestParam("sucursalPrincipal") int sucursalPrincipal,
+                             Model model) {
         clientesService.addCliente(dni, nombre, direccion, email, telefono, sucursalPrincipal);
 
         model.addAttribute("dni", dni);
@@ -35,15 +38,15 @@ public class ClientesController {
         model.addAttribute("telefono", telefono);
         model.addAttribute("sucursalPrincipal", sucursalPrincipal);
 
-        return "addCliente";
+        return "";
     }
+
 
     @PutMapping("/modificarCliente")
     public String modificarCliente(@RequestParam(value = "id", required = false) Integer id,
                                    @RequestParam(value = "dni", required = false) String dni,
                                    @RequestParam(value = "email", required = false) String email,
-                                   Model model)
-    {
+                                   Model model) {
         model.addAttribute("id", id.toString());
         model.addAttribute("dni", dni);
         model.addAttribute("email", email);
@@ -52,8 +55,7 @@ public class ClientesController {
     }
 
     @GetMapping("/listadoClientes")
-    public String listadoClientes(Model model)
-    {
+    public String listadoClientes(Model model) {
         clientesService.listadoClientes();
         return "listadoClientes";
     }
@@ -62,8 +64,7 @@ public class ClientesController {
     public String borrarCliente(@RequestParam(value = "id", required = false) Integer id,
                                 @RequestParam(value = "dni", required = false) String dni,
                                 @RequestParam(value = "email", required = false) String email,
-                               Model model)
-    {
+                                Model model) {
         model.addAttribute("id", id);
         clientesService.borrarCliente(id.toString());
         model.addAttribute("dni", dni);
@@ -78,8 +79,7 @@ public class ClientesController {
     public String mostrarCliente(@RequestParam(value = "id", required = false) Integer id,
                                  @RequestParam(value = "dni", required = false) String dni,
                                  @RequestParam(value = "email", required = false) String email,
-                               Model model)
-    {
+                                 Model model) {
         model.addAttribute("id", id);
         clientesService.mostrarCliente(id.toString());
         model.addAttribute("dni", dni);
