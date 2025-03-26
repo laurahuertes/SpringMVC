@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Menú Principal</title>
@@ -74,44 +74,46 @@
     </style>
 </head>
 <body>
-    <h1>Menú Principal</h1>
+<h1>Menú Principal</h1>
 
-    <div class="menu">
-        <!-- Menú Clientes -->
-        <div>
-            <h2>Clientes</h2>
-            <a href="/clientes/addCliente" class="add">Añadir Cliente</a>
-            <a href="/clientes/eliminar" class="delete">Eliminar Cliente</a>
-        </div>
+<div class="menu">
+    <!-- Menú Clientes -->
+    <div>
+        <h2>Clientes</h2>
+        <a href="/clientes/formularioAddCliente" class="add">Añadir Cliente</a>
+        <a href="/clientes/formularioDeleteCliente" class="delete">Eliminar Cliente</a>
+        <a href="/clientes/listadoClientes" class="get">Listar Clientes</a>
 
-        <!-- Menú Cuentas -->
-        <div>
-            <h2>Cuentas</h2>
-            <form action="/cuentas/addCuenta" method="get">
-                <input type="submit" value="Añadir cuenta">
-            </form>
-
-            <form action="/cuentas/deleteCuenta" method="get">
-                <input type="submit" value="Eliminar cuenta">
-            </form>
-
-            <form action="/cuentas/detailCuenta" method="get">
-                <input type="submit" value="Mostrar balance de una cuenta">
-            </form>
-
-            <form action="/cuentas/listCuentas" method="get">
-                <input type="submit" value="Listar cuentas">
-            </form>
-        </div>
-
-        <!-- Menú Sucursales -->
-        <div>
-            <h2>Sucursales</h2>
-            <a href="/sucursales/formularioAddSucursal" class="add">Añadir sucursal</a>
-            <a href="/sucursales/listadoSucursales" class="get">Listar sucursales</a>
-            <a href="/sucursales/formularioDeleteSucursal" class="delete">Eliminar sucursal</a>
-            <a href="/sucursales/formularioModifySucursal" class="modify">Modificar sucursal</a>
-        </div>
     </div>
+    <!-- Menú Cuentas -->
+    <div>
+        <h2>Cuentas</h2>
+        <form action="/cuentas/addCuenta" method="get">
+            <input type="submit" value="Añadir cuenta">
+        </form>
+
+        <form action="/cuentas/deleteCuenta" method="get">
+            <input type="submit" value="Eliminar cuenta">
+        </form>
+
+        <form action="/cuentas/detailCuenta" method="get">
+            <input type="submit" value="Mostrar balance de una cuenta">
+        </form>
+
+        <form action="/cuentas/listCuentas" method="get">
+            <input type="submit" value="Listar cuentas">
+        </form>
+    </div>
+
+    <!-- Menú Sucursales -->
+    <div>
+        <h2>Sucursales</h2>
+        <a href="/sucursales/formularioAddSucursal" class="add">Añadir sucursal</a>
+        <a href="/sucursales/listadoSucursales" class="get">Listar sucursales</a>
+        <a href="/sucursales/formularioDeleteSucursal" class="delete">Eliminar sucursal</a>
+        <a href="/sucursales/formularioModifySucursal" class="modify">Modificar sucursal</a>
+    </div>
+
+</div>
 </body>
 </html>

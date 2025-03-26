@@ -1,6 +1,4 @@
-
 package es.neesis.mvcdemo.model;
-import es.neesis.mvcdemo.model.Sucursal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +22,10 @@ public class Cliente {
         this.telefono = telefono;
         this.sucursalPrincipal = sucursalPrincipal;
         this.cuentas = new ArrayList<>();
+    }
+
+    public Cliente() {
+
     }
 
     public Integer getId() {
@@ -50,12 +52,16 @@ public class Cliente {
         return this.telefono;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Sucursal getSucursalPrincipal() {
         return this.sucursalPrincipal;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setSucursalPrincipal(Integer id) {
+        this.sucursalPrincipal = sucursalPrincipal;
     }
 
     public void setDni(String dni) {
@@ -76,20 +82,6 @@ public class Cliente {
 
     public void setTelefono(int telefono) {
         this.telefono = telefono;
-    }
-
-    public void setSucursalPrincipal(Sucursal sucursalPrincipal) {
-        this.sucursalPrincipal = sucursalPrincipal;
-    }
-
-    public void SetCliente(Cliente cliente) {
-        this.id = cliente.getId();
-        this.dni = cliente.getDni();
-        this.nombre = cliente.getNombre();
-        this.direccion = cliente.getDireccion();
-        this.email = cliente.getEmail();
-        this.telefono = cliente.getTelefono();
-        this.sucursalPrincipal = cliente.getSucursalPrincipal();
     }
 
 }
