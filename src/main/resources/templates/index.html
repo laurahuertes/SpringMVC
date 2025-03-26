@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú Principal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #2e6da4;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .menu div {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            width: 25%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu div h2 {
+            color: #333;
+        }
+
+        .menu div a {
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .menu div a:hover {
+            background-color: #4cae4c;
+        }
+
+        .menu div a.delete {
+            background-color: #d9534f;
+        }
+
+        .menu div a.delete:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Menú Principal</h1>
+
+    <div class="menu">
+        <!-- Menú Clientes -->
+        <div>
+            <h2>Clientes</h2>
+            <a href="/clientes/addCliente" class="add">Añadir Cliente</a>
+            <a href="/clientes/eliminar" class="delete">Eliminar Cliente</a>
+        </div>
+
+        <!-- Menú Cuentas -->
+        <div>
+            <h2>Cuentas</h2>
+            <a href="/cuentas/addCuenta" class="add">Añadir cuenta</a>
+            <a href="/cuentas/deleteCuenta" class="delete">Eliminar cuenta</a>
+            <a href="/cuentas/listCuentas" class="¿?">Listar cuentas</a>
+        </div>
+
+        <!-- Menú Sucursales -->
+        <div>
+            <h2>Sucursales</h2>
+            <a href="/sucursales//formularioSucursal" class="add">Añadir cuenta</a>
+            <a href="/sucursales/listadoSucursales" class="¿?">Listar Sucursales</a>
+            <a href="/sucursales/deleteSucursal" class="delete">Eliminar Sucursal</a>
+        </div>
+    </div>
+</body>
+</html>

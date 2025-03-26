@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Sucursales</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Sucursales</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Director</th>
+                <th>Dirección</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre la lista de sucursales -->
+            <tr th:each="sucursal : ${sucursales}">
+                <td th:text="${sucursal.id}">ID</td>
+                <td th:text="${sucursal.nombre}">Nombre</td>
+                <td th:text="${sucursal.director}">Director</td>
+                <td th:text="${sucursal.direccion}">Dirección</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
