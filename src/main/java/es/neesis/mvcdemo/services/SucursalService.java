@@ -1,6 +1,7 @@
 package es.neesis.mvcdemo.services;
 
 
+import es.neesis.mvcdemo.model.Cuenta;
 import org.springframework.stereotype.Service;
 import es.neesis.mvcdemo.model.Sucursal;
 import java.util.ArrayList;
@@ -17,14 +18,48 @@ public class SucursalService {
 
     public void addSucursal(String nombre, String director, String direccion) {
         
-        Sucursal sucursal = new Sucursal(contador++,nombre,director,direccion);
+        Sucursal sucursal = new Sucursal(++contador,nombre,director,direccion);
         sucursales.add(sucursal);
     
     }
 
     public void deleteSucursal(String nombre){
 
-        sucursales.removeIf(sucursal -> sucursal.getNombre().equals(nombre));
+        for (Sucursal sucursal : sucursales)
+        {
+            if (sucursal.getNombre().equals(nombre))
+            {
+                try
+                {
+                    sucursales.remove(sucursal);
+                    break;
+                }
+                catch(Exception e)
+                {
+                    throw new IllegalArgumentException("La sucursal que quiere borrar no existe");
+                }
+            }
+        }
+    }
+
+    public void modifySucursal(String nombre, String director, String direccion){
+
+        for (int i = 0; i < sucursales.size(); i++)
+        {
+            if (sucursales.get(i).getNombre().equals(nombre))
+            {
+                try
+                {
+                    Sucursal newsucursal = new Sucursal(sucursales.get(i).getId(), nombre, director, direccion);
+                    sucursales.set(i, newsucursal);
+                    break;
+                }
+                catch(Exception e)
+                {
+                    throw new IllegalArgumentException("La sucursal que quiere borrar no existe");
+                }
+            }
+        }
     }
 
 
